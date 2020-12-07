@@ -5,10 +5,12 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
+                <div class="panel-heading">Dashboard</div>
+                <a href="/post/create" class="btn btn-primary">Create Post</a>
+                <h3>Your Blog Posts</h3>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    You are logged in!
                 </div>
             </div>
         </div>

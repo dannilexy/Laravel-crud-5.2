@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\post;
 
+use Illuminate\Support\Facades\Auth;
+
 class postController extends Controller
 {
     /**
@@ -49,9 +51,9 @@ class postController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body'); 
+        $post->user_id = auth()->user()->id;
         $post->save();
         return redirect('/post')->with('success','Post Created Successfully');
-
 
     }
 
@@ -75,7 +77,8 @@ class postController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.edit')->with('post', $post);
     }
 
     /**
@@ -87,7 +90,12 @@ class postController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = post::find($id);
+        $post->title = $request->input('title');
+        $post->body = $request->input('body'); 
+        $post->user_id = Auth()->user()->id;
+        $post->save();
+        return redirect('/post')->with('success','Post Updated Successfully');
     }
 
     /**
@@ -98,6 +106,8 @@ class postController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = post::find($id);
+        $post->delete();
+        return redirect('/post')->with('success','Post deleted!');
     }
 }

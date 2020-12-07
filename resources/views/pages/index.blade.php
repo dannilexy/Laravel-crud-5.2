@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('content')
 <div class="jumbotron">
   <h1 class="display-4">Hello, world!</h1>
@@ -6,7 +6,7 @@
   <hr class="my-4">
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
   <a class="btn btn-primary btn-lg" href="/register" role="button">Register</a>
-  <a class="btn btn-success btn-lg" href="signin" role="button">Sign-in</a>
+  <a class="btn btn-success btn-lg" href="login" role="button">Sign-in</a>
 </div>
 @endsection
 

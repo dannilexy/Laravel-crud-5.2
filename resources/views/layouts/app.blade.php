@@ -85,7 +85,7 @@
             </div>
         </div>
     </nav>
-        <div class="container" style="padding-top: 100px;">
+        <div class="container-fluid " style="padding-top: 50px;">
             @include('inc.messages')
         @yield('content')
         </div>

@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('content')
     <h1 class="text-center">Edit Posts</h1>
     {!! Form::open(['action'=>['postController@update', $post->id], 'method'=>'POST']) !!}

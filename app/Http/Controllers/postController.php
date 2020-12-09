@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Auth;
 
 class postController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except'=>['index','show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -78,6 +88,10 @@ class postController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+        if(Auth()->user()->id != $post->user_id){
+            return redirect('/post')-> with('error', 'Unathorized page');
+
+        }
         return view('posts.edit')->with('post', $post);
     }
 
@@ -107,6 +121,10 @@ class postController extends Controller
     public function destroy($id)
     {
         $post = post::find($id);
+        if(Auth()->user()->id != $post->user_id){
+            return redirect('/post')-> with('error', 'Unathorized page');
+
+        }
         $post->delete();
         return redirect('/post')->with('success','Post deleted!');
     }

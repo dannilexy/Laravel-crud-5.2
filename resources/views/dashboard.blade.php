@@ -7,15 +7,15 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
                 <a href="/post/create" class="btn btn-primary">Create Post</a>
-                <h3>Your Blog Posts</h3>
+                <h3 class="text-center">Your Blog Posts</h3>
 
                 <div class="panel-body">
                     @if (count($posts)>0)
-                <table class="table table-stripped">
+                <table class="table table-stripped" style="border: 2ch">
                     <tr>
                         <th>Title</th>
-                        <th></th>
-                        <th></th>
+                        <th>edit</th>
+                        <th>Delete</th>
                     </tr>
                     
                     @foreach ($posts as $post)
@@ -27,8 +27,9 @@
                             {{Form::submit('Delete', ['class'=>'btn btn-danger'])}}
                         {!!Form::close()!!}</td>
                     </tr>
+                    @endforeach
                 </table> 
-                @endforeach
+                
                     @else
                         <h3>No Posts found</h3>
                     @endif
